@@ -29,7 +29,12 @@
       cursor: none;
     }
 
-    /* Custom Cursor */
+    /* Custom Cursor — desktop only */
+    @media (hover: none) and (pointer: coarse) {
+      body { cursor: auto; }
+      .cursor, .cursor-follower { display: none !important; }
+    }
+
     .cursor {
       width: 8px; height: 8px;
       background: var(--brass);
