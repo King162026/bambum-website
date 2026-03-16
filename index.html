@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>BAMBUM ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Pure. Soft. Sustainable.</title>
+  <title>BAMBUM ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Pure. Soft. Sustainable.</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
 
@@ -200,6 +200,52 @@
 
     }
 
+    .hero > *:not(.hero-bg-image):not(.hero-overlay) {
+
+      position: relative;
+
+      z-index: 2;
+
+    }
+
+    .hero-bg-image {
+
+      position: absolute;
+
+      inset: 0;
+
+      background-image: url('https://images.pexels.com/photos/1125776/pexels-photo-1125776.jpeg?auto=compress&cs=tinysrgb&w=1400');
+
+      background-size: cover;
+
+      background-position: center;
+
+      z-index: 0;
+
+      animation: kenburns 18s ease-in-out infinite alternate;
+
+    }
+
+    .hero-overlay {
+
+      position: absolute;
+
+      inset: 0;
+
+      background: linear-gradient(to right, rgba(27,58,45,0.88) 45%, rgba(27,58,45,0.45) 100%);
+
+      z-index: 1;
+
+    }
+
+    @keyframes kenburns {
+
+      from { transform: scale(1) translateX(0); }
+
+      to { transform: scale(1.08) translateX(-2%); }
+
+    }
+
     .hero-bg-text {
 
       position: absolute;
@@ -367,23 +413,7 @@
 
 
     
-    /* HERO IMAGE */
-    .hero-image-wrapper {
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 44%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 1;
-    }
-    .hero-image-wrapper img {
-      width: 100%;
-      height: 115%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-    }
+    /* HERO IMAGE - replaced with full-bg */
     .hero-image-left-fade {
       position: absolute;
       inset: 0;
@@ -1454,6 +1484,10 @@
 
   <section class="hero" id="hero">
 
+    <div class="hero-bg-image"></div>
+
+    <div class="hero-overlay"></div>
+
     <div class="hero-bg-text">B</div>
 
     <div class="hero-label">Pure Bamboo Personal Care</div>
@@ -1508,7 +1542,7 @@
 
       </p>
 
-      <p class="statement-caption">Canada &nbsp;ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ·&nbsp; USA &nbsp;ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ·&nbsp; UAE</p>
+      <p class="statement-caption">Canada &nbsp;ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ·&nbsp; USA &nbsp;ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ·&nbsp; UAE</p>
 
     </div>
 
@@ -1560,11 +1594,11 @@
 
         <div class="product-spec">4-ply premium bamboo fiber</div>
 
-        <div class="product-spec">No bleach ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ· No chlorine ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ· No BPA ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ· No dyes</div>
+        <div class="product-spec">No bleach ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ· No chlorine ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ· No BPA ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ· No dyes</div>
 
         <div class="product-spec">FSC certified origin</div>
 
-        <div class="product-spec">Available in 12 ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ· 24 ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ· 48 rolls</div>
+        <div class="product-spec">Available in 12 ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ· 24 ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ· 48 rolls</div>
 
         <div class="product-spec">DTC subscription + one-time purchase</div>
 
@@ -1742,7 +1776,7 @@
 
           <p class="proof-quote">"It actually feels like fabric. I even skipped my next delivery because I still had plenty left."</p>
 
-          <div class="proof-author">Emma T. ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Toronto</div>
+          <div class="proof-author">Emma T. ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Toronto</div>
 
         </div>
 
@@ -1750,7 +1784,7 @@
 
           <p class="proof-quote">"I like that they did not bleach the paper. It is pure and I plan on purchasing again."</p>
 
-          <div class="proof-author">livelifefully13 ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Instagram</div>
+          <div class="proof-author">livelifefully13 ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Instagram</div>
 
         </div>
 
@@ -1758,7 +1792,7 @@
 
           <p class="proof-quote">"BAMBUM changed how I think about the products in my bathroom. This belongs in a luxury hotel."</p>
 
-          <div class="proof-author">Verified Subscriber ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Canada</div>
+          <div class="proof-author">Verified Subscriber ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Canada</div>
 
         </div>
 
@@ -1766,7 +1800,7 @@
 
           <p class="proof-quote">"Softer than any brand I have tried. My skin is sensitive and this is the only one that works."</p>
 
-          <div class="proof-author">Verified Subscriber ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ USA</div>
+          <div class="proof-author">Verified Subscriber ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ USA</div>
 
         </div>
 
@@ -1776,7 +1810,7 @@
 
           <p class="proof-quote">"It actually feels like fabric. I even skipped my next delivery because I still had plenty left."</p>
 
-          <div class="proof-author">Emma T. ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Toronto</div>
+          <div class="proof-author">Emma T. ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Toronto</div>
 
         </div>
 
@@ -1784,7 +1818,7 @@
 
           <p class="proof-quote">"I like that they did not bleach the paper. It is pure and I plan on purchasing again."</p>
 
-          <div class="proof-author">livelifefully13 ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Instagram</div>
+          <div class="proof-author">livelifefully13 ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Instagram</div>
 
         </div>
 
@@ -1792,7 +1826,7 @@
 
           <p class="proof-quote">"BAMBUM changed how I think about the products in my bathroom. This belongs in a luxury hotel."</p>
 
-          <div class="proof-author">Verified Subscriber ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Canada</div>
+          <div class="proof-author">Verified Subscriber ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Canada</div>
 
         </div>
 
@@ -1800,7 +1834,7 @@
 
           <p class="proof-quote">"Softer than any brand I have tried. My skin is sensitive and this is the only one that works."</p>
 
-          <div class="proof-author">Verified Subscriber ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ USA</div>
+          <div class="proof-author">Verified Subscriber ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ USA</div>
 
         </div>
 
@@ -1850,7 +1884,7 @@
 
       <div class="footer-tagline">Pure. Soft. Sustainable.</div>
 
-      <div class="footer-markets">Canada &nbsp;ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ·&nbsp; USA &nbsp;ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ·&nbsp; UAE</div>
+      <div class="footer-markets">Canada &nbsp;ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ·&nbsp; USA &nbsp;ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ·&nbsp; UAE</div>
 
     </div>
 
@@ -1912,7 +1946,7 @@
 
   <div class="footer-bottom">
 
-    <span class="footer-copy">ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ© 2026 BAMBUM. All rights reserved. &nbsp;ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ·&nbsp; bambum.ca</span>
+    <span class="footer-copy">ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ© 2026 BAMBUM. All rights reserved. &nbsp;ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ·&nbsp; bambum.ca</span>
 
     <a href="#" class="footer-unsubscribe">Unsubscribe</a>
 
