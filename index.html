@@ -1,0 +1,2110 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>BAMBUM â Pure. Soft. Sustainable.</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <style>
+
+    :root {
+
+      --green: #1B3A2D;
+
+      --cream: #F2E8D9;
+
+      --brass: #B5833A;
+
+      --charcoal: #2A2820;
+
+      --light-green: #2D5C47;
+
+      --dark-cream: #E8DBC8;
+
+    }
+
+
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+
+    html { scroll-behavior: smooth; }
+
+
+
+    body {
+
+      background: var(--charcoal);
+
+      color: var(--cream);
+
+      font-family: 'Inter', sans-serif;
+
+      overflow-x: hidden;
+
+      cursor: none;
+
+    }
+
+
+
+    /* Custom Cursor */
+
+    .cursor {
+
+      width: 8px; height: 8px;
+
+      background: var(--brass);
+
+      border-radius: 50%;
+
+      position: fixed;
+
+      top: 0; left: 0;
+
+      pointer-events: none;
+
+      z-index: 9999;
+
+      transition: transform 0.1s ease;
+
+    }
+
+    .cursor-follower {
+
+      width: 36px; height: 36px;
+
+      border: 1px solid rgba(181,131,58,0.4);
+
+      border-radius: 50%;
+
+      position: fixed;
+
+      top: 0; left: 0;
+
+      pointer-events: none;
+
+      z-index: 9998;
+
+      transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease;
+
+    }
+
+
+
+    /* NAV */
+
+    nav {
+
+      position: fixed;
+
+      top: 0; left: 0; right: 0;
+
+      z-index: 100;
+
+      padding: 32px 60px;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      mix-blend-mode: normal;
+
+    }
+
+    .nav-logo {
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: 22px;
+
+      font-weight: 400;
+
+      letter-spacing: 6px;
+
+      color: var(--cream);
+
+      text-decoration: none;
+
+    }
+
+    .nav-links {
+
+      display: flex;
+
+      gap: 48px;
+
+      list-style: none;
+
+    }
+
+    .nav-links a {
+
+      color: var(--cream);
+
+      text-decoration: none;
+
+      font-size: 11px;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+
+      font-weight: 300;
+
+      opacity: 0.7;
+
+      transition: opacity 0.3s ease;
+
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+
+
+    /* HERO */
+
+    .hero {
+
+      height: 100vh;
+
+      background: var(--green);
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      align-items: flex-start;
+
+      padding: 0 60px;
+
+      position: relative;
+
+      overflow: hidden;
+
+    }
+
+    .hero-bg-text {
+
+      position: absolute;
+
+      right: -20px;
+
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: 28vw;
+
+      font-weight: 300;
+
+      color: rgba(242,232,217,0.04);
+
+      letter-spacing: -10px;
+
+      line-height: 1;
+
+      pointer-events: none;
+
+      user-select: none;
+
+    }
+
+    .hero-label {
+
+      font-size: 10px;
+
+      letter-spacing: 5px;
+
+      text-transform: uppercase;
+
+      color: var(--brass);
+
+      margin-bottom: 32px;
+
+      opacity: 0;
+
+    }
+
+    .hero-headline {
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: clamp(52px, 8vw, 110px);
+
+      font-weight: 300;
+
+      line-height: 1.0;
+
+      color: var(--cream);
+
+      max-width: 800px;
+
+      margin-bottom: 40px;
+
+    }
+
+    .hero-headline em {
+
+      font-style: italic;
+
+      color: var(--brass);
+
+    }
+
+    .hero-sub {
+
+      font-size: 14px;
+
+      font-weight: 300;
+
+      letter-spacing: 1px;
+
+      color: rgba(242,232,217,0.6);
+
+      max-width: 380px;
+
+      line-height: 1.8;
+
+      margin-bottom: 56px;
+
+      opacity: 0;
+
+    }
+
+    .hero-cta {
+
+      display: inline-block;
+
+      padding: 18px 52px;
+
+      background: transparent;
+
+      border: 1px solid var(--brass);
+
+      color: var(--brass);
+
+      font-size: 10px;
+
+      letter-spacing: 4px;
+
+      text-transform: uppercase;
+
+      text-decoration: none;
+
+      transition: background 0.4s ease, color 0.4s ease;
+
+      opacity: 0;
+
+    }
+
+    .hero-cta:hover {
+
+      background: var(--brass);
+
+      color: var(--cream);
+
+    }
+
+    .hero-scroll {
+
+      position: absolute;
+
+      bottom: 48px;
+
+      left: 60px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 16px;
+
+      font-size: 9px;
+
+      letter-spacing: 4px;
+
+      text-transform: uppercase;
+
+      color: rgba(242,232,217,0.4);
+
+      opacity: 0;
+
+    }
+
+    .hero-scroll-line {
+
+      width: 60px;
+
+      height: 1px;
+
+      background: var(--brass);
+
+      transform-origin: left;
+
+      transform: scaleX(0);
+
+    }
+
+
+
+    /* STATEMENT SECTION */
+
+    .statement {
+
+      background: var(--cream);
+
+      padding: 160px 60px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      min-height: 60vh;
+
+      position: relative;
+
+      overflow: hidden;
+
+    }
+
+    .statement-inner {
+
+      max-width: 900px;
+
+      text-align: center;
+
+    }
+
+    .statement-line {
+
+      width: 1px;
+
+      height: 80px;
+
+      background: var(--brass);
+
+      margin: 0 auto 48px;
+
+      transform: scaleY(0);
+
+      transform-origin: top;
+
+    }
+
+    .statement-text {
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: clamp(32px, 4.5vw, 62px);
+
+      font-weight: 300;
+
+      color: var(--charcoal);
+
+      line-height: 1.3;
+
+      opacity: 0;
+
+    }
+
+    .statement-text em {
+
+      font-style: italic;
+
+      color: var(--brass);
+
+    }
+
+    .statement-caption {
+
+      margin-top: 40px;
+
+      font-size: 11px;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+
+      color: rgba(42,40,32,0.4);
+
+      opacity: 0;
+
+    }
+
+
+
+    /* PRODUCT SECTION */
+
+    .product {
+
+      background: var(--charcoal);
+
+      padding: 160px 60px;
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 80px;
+
+      align-items: center;
+
+      min-height: 100vh;
+
+    }
+
+    .product-visual {
+
+      position: relative;
+
+      height: 600px;
+
+      overflow: hidden;
+
+    }
+
+    .product-img-placeholder {
+
+      width: 100%;
+
+      height: 100%;
+
+      background: linear-gradient(135deg, var(--light-green) 0%, var(--green) 100%);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: 80px;
+
+      color: rgba(242,232,217,0.15);
+
+      letter-spacing: 4px;
+
+    }
+
+    .product-overlay {
+
+      position: absolute;
+
+      bottom: 40px;
+
+      left: 40px;
+
+      right: 40px;
+
+    }
+
+    .product-tag {
+
+      display: inline-block;
+
+      padding: 8px 20px;
+
+      border: 1px solid rgba(181,131,58,0.4);
+
+      font-size: 9px;
+
+      letter-spacing: 4px;
+
+      text-transform: uppercase;
+
+      color: var(--brass);
+
+      margin-bottom: 16px;
+
+    }
+
+    .product-content { padding: 40px 0; opacity: 0; transform: translateY(40px); }
+
+    .product-label {
+
+      font-size: 10px;
+
+      letter-spacing: 5px;
+
+      text-transform: uppercase;
+
+      color: var(--brass);
+
+      margin-bottom: 28px;
+
+    }
+
+    .product-title {
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: clamp(38px, 4vw, 58px);
+
+      font-weight: 300;
+
+      line-height: 1.1;
+
+      color: var(--cream);
+
+      margin-bottom: 32px;
+
+    }
+
+    .product-title em { font-style: italic; }
+
+    .product-desc {
+
+      font-size: 14px;
+
+      font-weight: 300;
+
+      line-height: 1.9;
+
+      color: rgba(242,232,217,0.55);
+
+      margin-bottom: 48px;
+
+      max-width: 420px;
+
+    }
+
+    .product-specs {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 16px;
+
+      margin-bottom: 48px;
+
+    }
+
+    .product-spec {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 16px;
+
+      font-size: 12px;
+
+      letter-spacing: 1px;
+
+      color: rgba(242,232,217,0.5);
+
+    }
+
+    .product-spec::before {
+
+      content: '';
+
+      width: 20px;
+
+      height: 1px;
+
+      background: var(--brass);
+
+      flex-shrink: 0;
+
+    }
+
+    .btn-primary {
+
+      display: inline-block;
+
+      padding: 18px 52px;
+
+      background: var(--brass);
+
+      color: var(--cream);
+
+      font-size: 10px;
+
+      letter-spacing: 4px;
+
+      text-transform: uppercase;
+
+      text-decoration: none;
+
+      transition: opacity 0.3s ease;
+
+    }
+
+    .btn-primary:hover { opacity: 0.85; }
+
+
+
+    /* INGREDIENTS */
+
+    .ingredients {
+
+      background: var(--green);
+
+      padding: 160px 60px;
+
+      min-height: 100vh;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+    }
+
+    .section-header {
+
+      display: flex;
+
+      align-items: flex-end;
+
+      justify-content: space-between;
+
+      margin-bottom: 100px;
+
+    }
+
+    .section-label {
+
+      font-size: 10px;
+
+      letter-spacing: 5px;
+
+      text-transform: uppercase;
+
+      color: var(--brass);
+
+      margin-bottom: 20px;
+
+    }
+
+    .section-title {
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: clamp(36px, 4vw, 56px);
+
+      font-weight: 300;
+
+      color: var(--cream);
+
+      line-height: 1.15;
+
+      opacity: 0;
+
+    }
+
+    .section-title em { font-style: italic; color: var(--brass); }
+
+    .section-desc {
+
+      max-width: 300px;
+
+      font-size: 13px;
+
+      font-weight: 300;
+
+      line-height: 1.8;
+
+      color: rgba(242,232,217,0.5);
+
+      text-align: right;
+
+      opacity: 0;
+
+    }
+
+    .ingredients-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 2px;
+
+    }
+
+    .ingredient-card {
+
+      background: rgba(242,232,217,0.04);
+
+      padding: 48px 36px;
+
+      border-top: 1px solid rgba(181,131,58,0.2);
+
+      opacity: 0;
+
+      transform: translateY(30px);
+
+      transition: background 0.4s ease;
+
+    }
+
+    .ingredient-card:hover { background: rgba(242,232,217,0.07); }
+
+    .ingredient-num {
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: 48px;
+
+      font-weight: 300;
+
+      color: rgba(181,131,58,0.2);
+
+      line-height: 1;
+
+      margin-bottom: 24px;
+
+    }
+
+    .ingredient-name {
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: 22px;
+
+      font-weight: 400;
+
+      color: var(--cream);
+
+      margin-bottom: 16px;
+
+    }
+
+    .ingredient-desc {
+
+      font-size: 12px;
+
+      font-weight: 300;
+
+      line-height: 1.8;
+
+      color: rgba(242,232,217,0.45);
+
+    }
+
+
+
+    /* SUBSCRIPTION */
+
+    .subscription {
+
+      background: var(--cream);
+
+      padding: 160px 60px;
+
+      min-height: 80vh;
+
+      display: flex;
+
+      align-items: center;
+
+    }
+
+    .subscription-inner {
+
+      width: 100%;
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 100px;
+
+      align-items: center;
+
+    }
+
+    .subscription-content .section-title { color: var(--charcoal); }
+
+    .subscription-content .section-title em { color: var(--brass); }
+
+    .subscription-text {
+
+      font-size: 14px;
+
+      font-weight: 300;
+
+      line-height: 1.9;
+
+      color: rgba(42,40,32,0.6);
+
+      margin: 32px 0 48px;
+
+      opacity: 0;
+
+    }
+
+    .subscription-plans {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 2px;
+
+      opacity: 0;
+
+    }
+
+    .plan {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding: 28px 36px;
+
+      background: var(--charcoal);
+
+      transition: background 0.3s ease;
+
+      cursor: pointer;
+
+    }
+
+    .plan:hover { background: var(--green); }
+
+    .plan-name {
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: 20px;
+
+      color: var(--cream);
+
+    }
+
+    .plan-price {
+
+      font-size: 12px;
+
+      letter-spacing: 2px;
+
+      color: var(--brass);
+
+    }
+
+    .plan-arrow {
+
+      width: 24px;
+
+      height: 1px;
+
+      background: rgba(242,232,217,0.2);
+
+      position: relative;
+
+      transition: width 0.3s ease;
+
+    }
+
+    .plan:hover .plan-arrow { width: 36px; background: var(--brass); }
+
+
+
+    /* SOCIAL PROOF */
+
+    .proof {
+
+      background: var(--charcoal);
+
+      padding: 160px 60px;
+
+      overflow: hidden;
+
+    }
+
+    .proof-header { text-align: center; margin-bottom: 80px; }
+
+    .proof-header .section-title { color: var(--cream); }
+
+    .proof-track {
+
+      display: flex;
+
+      gap: 32px;
+
+      animation: slide 30s linear infinite;
+
+      width: max-content;
+
+    }
+
+    @keyframes slide {
+
+      0% { transform: translateX(0); }
+
+      100% { transform: translateX(-50%); }
+
+    }
+
+    .proof-card {
+
+      width: 380px;
+
+      flex-shrink: 0;
+
+      background: rgba(242,232,217,0.04);
+
+      padding: 48px;
+
+      border-left: 1px solid rgba(181,131,58,0.2);
+
+    }
+
+    .proof-quote {
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: 20px;
+
+      font-weight: 300;
+
+      font-style: italic;
+
+      line-height: 1.6;
+
+      color: var(--cream);
+
+      margin-bottom: 32px;
+
+    }
+
+    .proof-author {
+
+      font-size: 10px;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+
+      color: var(--brass);
+
+    }
+
+
+
+    /* RITUAL SECTION */
+
+    .ritual {
+
+      background: var(--green);
+
+      padding: 200px 60px;
+
+      text-align: center;
+
+      position: relative;
+
+      overflow: hidden;
+
+    }
+
+    .ritual-bg {
+
+      position: absolute;
+
+      inset: 0;
+
+      background: radial-gradient(ellipse at center, rgba(181,131,58,0.08) 0%, transparent 70%);
+
+    }
+
+    .ritual-label {
+
+      font-size: 10px;
+
+      letter-spacing: 5px;
+
+      text-transform: uppercase;
+
+      color: var(--brass);
+
+      margin-bottom: 40px;
+
+      opacity: 0;
+
+    }
+
+    .ritual-headline {
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: clamp(44px, 6vw, 88px);
+
+      font-weight: 300;
+
+      color: var(--cream);
+
+      line-height: 1.1;
+
+      max-width: 800px;
+
+      margin: 0 auto 48px;
+
+      opacity: 0;
+
+    }
+
+    .ritual-headline em { font-style: italic; color: var(--brass); }
+
+    .ritual-sub {
+
+      font-size: 14px;
+
+      font-weight: 300;
+
+      color: rgba(242,232,217,0.5);
+
+      max-width: 440px;
+
+      margin: 0 auto 60px;
+
+      line-height: 1.8;
+
+      opacity: 0;
+
+    }
+
+    .ritual-cta {
+
+      display: inline-block;
+
+      padding: 20px 64px;
+
+      background: var(--brass);
+
+      color: var(--cream);
+
+      font-size: 10px;
+
+      letter-spacing: 5px;
+
+      text-transform: uppercase;
+
+      text-decoration: none;
+
+      opacity: 0;
+
+      transition: opacity 0.3s ease;
+
+    }
+
+    .ritual-cta:hover { opacity: 0.85; }
+
+
+
+    /* FOOTER */
+
+    footer {
+
+      background: var(--charcoal);
+
+      border-top: 1px solid rgba(181,131,58,0.15);
+
+      padding: 80px 60px;
+
+      display: grid;
+
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+
+      gap: 60px;
+
+    }
+
+    .footer-brand-name {
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: 28px;
+
+      font-weight: 300;
+
+      letter-spacing: 6px;
+
+      color: var(--cream);
+
+      margin-bottom: 20px;
+
+    }
+
+    .footer-tagline {
+
+      font-size: 11px;
+
+      letter-spacing: 2px;
+
+      color: rgba(242,232,217,0.35);
+
+      text-transform: uppercase;
+
+      margin-bottom: 36px;
+
+    }
+
+    .footer-markets {
+
+      font-size: 11px;
+
+      letter-spacing: 1px;
+
+      color: rgba(242,232,217,0.25);
+
+      line-height: 2;
+
+    }
+
+    .footer-col-title {
+
+      font-size: 9px;
+
+      letter-spacing: 4px;
+
+      text-transform: uppercase;
+
+      color: var(--brass);
+
+      margin-bottom: 24px;
+
+    }
+
+    .footer-links {
+
+      list-style: none;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 12px;
+
+    }
+
+    .footer-links a {
+
+      font-size: 13px;
+
+      font-weight: 300;
+
+      color: rgba(242,232,217,0.45);
+
+      text-decoration: none;
+
+      transition: color 0.3s ease;
+
+    }
+
+    .footer-links a:hover { color: var(--cream); }
+
+    .footer-bottom {
+
+      background: var(--charcoal);
+
+      padding: 24px 60px;
+
+      border-top: 1px solid rgba(242,232,217,0.05);
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+    }
+
+    .footer-copy {
+
+      font-size: 11px;
+
+      color: rgba(242,232,217,0.2);
+
+      letter-spacing: 1px;
+
+    }
+
+    .footer-unsubscribe {
+
+      font-size: 11px;
+
+      color: rgba(242,232,217,0.2);
+
+      text-decoration: none;
+
+      letter-spacing: 1px;
+
+      transition: color 0.3s ease;
+
+    }
+
+    .footer-unsubscribe:hover { color: rgba(242,232,217,0.5); }
+
+
+
+    /* PAGE LOADER */
+
+    .loader {
+
+      position: fixed;
+
+      inset: 0;
+
+      background: var(--charcoal);
+
+      z-index: 1000;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      flex-direction: column;
+
+      gap: 24px;
+
+    }
+
+    .loader-name {
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: 32px;
+
+      font-weight: 300;
+
+      letter-spacing: 10px;
+
+      color: var(--cream);
+
+    }
+
+    .loader-bar {
+
+      width: 200px;
+
+      height: 1px;
+
+      background: rgba(242,232,217,0.1);
+
+      position: relative;
+
+      overflow: hidden;
+
+    }
+
+    .loader-progress {
+
+      position: absolute;
+
+      top: 0; left: 0;
+
+      height: 100%;
+
+      background: var(--brass);
+
+      width: 0%;
+
+    }
+
+
+
+    @media (max-width: 900px) {
+
+      nav { padding: 24px 28px; }
+
+      .nav-links { display: none; }
+
+      .hero { padding: 0 28px; }
+
+      .statement { padding: 100px 28px; }
+
+      .product { grid-template-columns: 1fr; padding: 100px 28px; }
+
+      .product-visual { height: 400px; }
+
+      .ingredients { padding: 100px 28px; }
+
+      .ingredients-grid { grid-template-columns: 1fr 1fr; }
+
+      .subscription { padding: 100px 28px; }
+
+      .subscription-inner { grid-template-columns: 1fr; gap: 60px; }
+
+      .proof { padding: 100px 28px; }
+
+      .ritual { padding: 120px 28px; }
+
+      footer { grid-template-columns: 1fr 1fr; padding: 60px 28px; }
+
+      .footer-bottom { padding: 24px 28px; flex-direction: column; gap: 12px; }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+
+
+  <!-- Loader -->
+
+  <div class="loader" id="loader">
+
+    <div class="loader-name">BAMBUM</div>
+
+    <div class="loader-bar"><div class="loader-progress" id="loaderProgress"></div></div>
+
+  </div>
+
+
+
+  <!-- Cursor -->
+
+  <div class="cursor" id="cursor"></div>
+
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+
+
+  <!-- Nav -->
+
+  <nav>
+
+    <a href="#" class="nav-logo">BAMBUM</a>
+
+    <ul class="nav-links">
+
+      <li><a href="#product">Product</a></li>
+
+      <li><a href="#ingredients">Purity</a></li>
+
+      <li><a href="#subscribe">Subscribe</a></li>
+
+      <li><a href="https://bambum.ca">Shop</a></li>
+
+    </ul>
+
+  </nav>
+
+
+
+  <!-- Hero -->
+
+  <section class="hero" id="hero">
+
+    <div class="hero-bg-text">B</div>
+
+    <div class="hero-label">Pure Bamboo Personal Care</div>
+
+    <h1 class="hero-headline">
+
+      Not toilet paper.<br><em>A daily ritual.</em>
+
+    </h1>
+
+    <p class="hero-sub">
+
+      Your most sensitive skin deserves the same care you give everything else.
+
+      Pure bamboo. Nothing added. Nothing hidden.
+
+    </p>
+
+    <a href="https://bambum.ca" class="hero-cta">Start Your Ritual</a>
+
+    <div class="hero-scroll">
+
+      <div class="hero-scroll-line"></div>
+
+      Scroll
+
+    </div>
+
+  </section>
+
+
+
+  <!-- Statement -->
+
+  <section class="statement">
+
+    <div class="statement-inner">
+
+      <div class="statement-line"></div>
+
+      <p class="statement-text">
+
+        BAMBUM is not a toilet paper brand.<br>
+
+        It is a <em>skincare brand</em> that happens to be toilet paper.
+
+      </p>
+
+      <p class="statement-caption">Canada &nbsp;Â·&nbsp; USA &nbsp;Â·&nbsp; UAE</p>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- Product -->
+
+  <section class="product" id="product">
+
+    <div class="product-visual">
+
+      <div class="product-img-placeholder">
+
+        BAMBUM
+
+      </div>
+
+      <div class="product-overlay">
+
+        <div class="product-tag">FSC Certified Bamboo</div>
+
+      </div>
+
+    </div>
+
+    <div class="product-content">
+
+      <div class="product-label">The Product</div>
+
+      <h2 class="product-title">
+
+        Bamboo.<br>Pressed to<br><em>perfection.</em>
+
+      </h2>
+
+      <p class="product-desc">
+
+        Four layers of pure bamboo fiber, embossed with precision.
+
+        Silky against skin. Strong enough to trust.
+
+        Gentle enough for the most sensitive bodies.
+
+      </p>
+
+      <div class="product-specs">
+
+        <div class="product-spec">4-ply premium bamboo fiber</div>
+
+        <div class="product-spec">No bleach Â· No chlorine Â· No BPA Â· No dyes</div>
+
+        <div class="product-spec">FSC certified origin</div>
+
+        <div class="product-spec">Available in 12 Â· 24 Â· 48 rolls</div>
+
+        <div class="product-spec">DTC subscription + one-time purchase</div>
+
+      </div>
+
+      <a href="https://bambum.ca" class="btn-primary">Shop Now</a>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- Ingredients / Purity -->
+
+  <section class="ingredients" id="ingredients">
+
+    <div class="section-header">
+
+      <div>
+
+        <div class="section-label">What We Leave Out</div>
+
+        <h2 class="section-title">Pure ingredients.<br><em>Nothing hidden.</em></h2>
+
+      </div>
+
+      <p class="section-desc">
+
+        Most brands tell you what they add. We tell you what we don't.
+
+      </p>
+
+    </div>
+
+    <div class="ingredients-grid">
+
+      <div class="ingredient-card">
+
+        <div class="ingredient-num">01</div>
+
+        <div class="ingredient-name">No Bleach</div>
+
+        <p class="ingredient-desc">Conventional paper is bleached white. Ours stays the natural color of bamboo. What you see is what it is.</p>
+
+      </div>
+
+      <div class="ingredient-card">
+
+        <div class="ingredient-num">02</div>
+
+        <div class="ingredient-name">No Chlorine</div>
+
+        <p class="ingredient-desc">Chlorine processing leaves chemical residue. Your skin is too close to this product for us to accept that.</p>
+
+      </div>
+
+      <div class="ingredient-card">
+
+        <div class="ingredient-num">03</div>
+
+        <div class="ingredient-name">No BPA</div>
+
+        <p class="ingredient-desc">No endocrine-disrupting compounds. No synthetic additives. Nothing that should not be near human skin.</p>
+
+      </div>
+
+      <div class="ingredient-card">
+
+        <div class="ingredient-num">04</div>
+
+        <div class="ingredient-name">No Dyes</div>
+
+        <p class="ingredient-desc">Coloring agents have no place in a product used on skin this sensitive. The color you see is pure bamboo.</p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- Subscription -->
+
+  <section class="subscription" id="subscribe">
+
+    <div class="subscription-inner">
+
+      <div class="subscription-content">
+
+        <div class="section-label" style="color:var(--brass)">The Ritual</div>
+
+        <h2 class="section-title" style="opacity:1;color:var(--charcoal)">
+
+          Set it once.<br><em>Feel it always.</em>
+
+        </h2>
+
+        <p class="subscription-text">
+
+          A subscription is not a convenience feature. It is a commitment to your skin.
+
+          BAMBUM arrives at your door before you run out, every time,
+
+          on your schedule.
+
+        </p>
+
+        <a href="https://bambum.ca" class="btn-primary" style="background:var(--green);color:var(--cream)">Subscribe &amp; Save</a>
+
+      </div>
+
+      <div class="subscription-plans">
+
+        <div class="plan">
+
+          <div class="plan-name">12 Rolls</div>
+
+          <div class="plan-price">Monthly</div>
+
+          <div class="plan-arrow"></div>
+
+        </div>
+
+        <div class="plan">
+
+          <div class="plan-name">24 Rolls</div>
+
+          <div class="plan-price">Bi-Monthly</div>
+
+          <div class="plan-arrow"></div>
+
+        </div>
+
+        <div class="plan">
+
+          <div class="plan-name">48 Rolls</div>
+
+          <div class="plan-price">Quarterly</div>
+
+          <div class="plan-arrow"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- Social Proof -->
+
+  <section class="proof">
+
+    <div class="proof-header">
+
+      <div class="section-label" style="color:var(--brass);font-size:10px;letter-spacing:5px;text-transform:uppercase;margin-bottom:20px">What They Say</div>
+
+      <h2 class="section-title" style="color:var(--cream);font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);font-weight:300;opacity:1">
+
+        The skin knows the difference.
+
+      </h2>
+
+    </div>
+
+    <div style="overflow:hidden">
+
+      <div class="proof-track">
+
+        <div class="proof-card">
+
+          <p class="proof-quote">"It actually feels like fabric. I even skipped my next delivery because I still had plenty left."</p>
+
+          <div class="proof-author">Emma T. â Toronto</div>
+
+        </div>
+
+        <div class="proof-card">
+
+          <p class="proof-quote">"I like that they did not bleach the paper. It is pure and I plan on purchasing again."</p>
+
+          <div class="proof-author">livelifefully13 â Instagram</div>
+
+        </div>
+
+        <div class="proof-card">
+
+          <p class="proof-quote">"BAMBUM changed how I think about the products in my bathroom. This belongs in a luxury hotel."</p>
+
+          <div class="proof-author">Verified Subscriber â Canada</div>
+
+        </div>
+
+        <div class="proof-card">
+
+          <p class="proof-quote">"Softer than any brand I have tried. My skin is sensitive and this is the only one that works."</p>
+
+          <div class="proof-author">Verified Subscriber â USA</div>
+
+        </div>
+
+        <!-- Duplicate for loop -->
+
+        <div class="proof-card">
+
+          <p class="proof-quote">"It actually feels like fabric. I even skipped my next delivery because I still had plenty left."</p>
+
+          <div class="proof-author">Emma T. â Toronto</div>
+
+        </div>
+
+        <div class="proof-card">
+
+          <p class="proof-quote">"I like that they did not bleach the paper. It is pure and I plan on purchasing again."</p>
+
+          <div class="proof-author">livelifefully13 â Instagram</div>
+
+        </div>
+
+        <div class="proof-card">
+
+          <p class="proof-quote">"BAMBUM changed how I think about the products in my bathroom. This belongs in a luxury hotel."</p>
+
+          <div class="proof-author">Verified Subscriber â Canada</div>
+
+        </div>
+
+        <div class="proof-card">
+
+          <p class="proof-quote">"Softer than any brand I have tried. My skin is sensitive and this is the only one that works."</p>
+
+          <div class="proof-author">Verified Subscriber â USA</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- Ritual CTA -->
+
+  <section class="ritual">
+
+    <div class="ritual-bg"></div>
+
+    <div class="ritual-label">Begin</div>
+
+    <h2 class="ritual-headline">
+
+      Your skin touches this<br><em>twelve times a day.</em><br>Choose accordingly.
+
+    </h2>
+
+    <p class="ritual-sub">
+
+      Pure bamboo. No compromises. Delivered to your door, on your schedule,
+
+      across Canada, USA, and UAE.
+
+    </p>
+
+    <a href="https://bambum.ca" class="ritual-cta">Start Your Ritual</a>
+
+  </section>
+
+
+
+  <!-- Footer -->
+
+  <footer>
+
+    <div>
+
+      <div class="footer-brand-name">BAMBUM</div>
+
+      <div class="footer-tagline">Pure. Soft. Sustainable.</div>
+
+      <div class="footer-markets">Canada &nbsp;Â·&nbsp; USA &nbsp;Â·&nbsp; UAE</div>
+
+    </div>
+
+    <div>
+
+      <div class="footer-col-title">Shop</div>
+
+      <ul class="footer-links">
+
+        <li><a href="#">12 Rolls</a></li>
+
+        <li><a href="#">24 Rolls</a></li>
+
+        <li><a href="#">48 Rolls</a></li>
+
+        <li><a href="#">Subscribe</a></li>
+
+      </ul>
+
+    </div>
+
+    <div>
+
+      <div class="footer-col-title">Brand</div>
+
+      <ul class="footer-links">
+
+        <li><a href="#">Our Story</a></li>
+
+        <li><a href="#">Purity Promise</a></li>
+
+        <li><a href="#">Bamboo Origins</a></li>
+
+        <li><a href="#">Instagram</a></li>
+
+      </ul>
+
+    </div>
+
+    <div>
+
+      <div class="footer-col-title">Help</div>
+
+      <ul class="footer-links">
+
+        <li><a href="#">Shipping</a></li>
+
+        <li><a href="#">Returns</a></li>
+
+        <li><a href="#">FAQ</a></li>
+
+        <li><a href="#">Contact</a></li>
+
+      </ul>
+
+    </div>
+
+  </footer>
+
+  <div class="footer-bottom">
+
+    <span class="footer-copy">Â© 2026 BAMBUM. All rights reserved. &nbsp;Â·&nbsp; bambum.ca</span>
+
+    <a href="#" class="footer-unsubscribe">Unsubscribe</a>
+
+  </div>
+
+
+
+  <script>
+
+    gsap.registerPlugin(ScrollTrigger);
+
+
+
+    // Cursor
+
+    const cursor = document.getElementById('cursor');
+
+    const follower = document.getElementById('cursorFollower');
+
+    let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
+
+    document.addEventListener('mousemove', e => {
+
+      mouseX = e.clientX; mouseY = e.clientY;
+
+      gsap.to(cursor, { x: mouseX - 4, y: mouseY - 4, duration: 0.1 });
+
+    });
+
+    function animateFollower() {
+
+      followerX += (mouseX - followerX - 18) * 0.12;
+
+      followerY += (mouseY - followerY - 18) * 0.12;
+
+      follower.style.transform = `translate(${followerX}px, ${followerY}px)`;
+
+      requestAnimationFrame(animateFollower);
+
+    }
+
+    animateFollower();
+
+
+
+    // Loader
+
+    const loader = document.getElementById('loader');
+
+    const progress = document.getElementById('loaderProgress');
+
+    gsap.to(progress, {
+
+      width: '100%', duration: 1.4, ease: 'power2.inOut',
+
+      onComplete: () => {
+
+        gsap.to(loader, {
+
+          opacity: 0, duration: 0.6, delay: 0.2,
+
+          onComplete: () => { loader.style.display = 'none'; initAnimations(); }
+
+        });
+
+      }
+
+    });
+
+
+
+    function initAnimations() {
+
+      // Hero
+
+      gsap.timeline()
+
+        .to('.hero-label', { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 0.2)
+
+        .from('.hero-headline', { opacity: 0, y: 60, duration: 1.2, ease: 'power3.out' }, 0.4)
+
+        .to('.hero-sub', { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 0.8)
+
+        .to('.hero-cta', { opacity: 1, duration: 0.6, ease: 'power2.out' }, 1.1)
+
+        .to('.hero-scroll', { opacity: 1, duration: 0.6 }, 1.3)
+
+        .to('.hero-scroll-line', { scaleX: 1, duration: 0.8, ease: 'power2.out' }, 1.4);
+
+
+
+      // Statement
+
+      ScrollTrigger.create({
+
+        trigger: '.statement',
+
+        start: 'top 70%',
+
+        onEnter: () => {
+
+          gsap.to('.statement-line', { scaleY: 1, duration: 0.8, ease: 'power2.out' });
+
+          gsap.to('.statement-text', { opacity: 1, y: 0, duration: 1, delay: 0.3, ease: 'power2.out' });
+
+          gsap.to('.statement-caption', { opacity: 1, duration: 0.8, delay: 0.7 });
+
+        }
+
+      });
+
+
+
+      // Product
+
+      ScrollTrigger.create({
+
+        trigger: '.product',
+
+        start: 'top 60%',
+
+        onEnter: () => {
+
+          gsap.to('.product-content', { opacity: 1, y: 0, duration: 1, ease: 'power2.out' });
+
+        }
+
+      });
+
+
+
+      // Ingredients
+
+      ScrollTrigger.create({
+
+        trigger: '.ingredients',
+
+        start: 'top 60%',
+
+        onEnter: () => {
+
+          gsap.to('.ingredients .section-title', { opacity: 1, duration: 1, ease: 'power2.out' });
+
+          gsap.to('.ingredients .section-desc', { opacity: 1, duration: 1, delay: 0.2 });
+
+          gsap.to('.ingredient-card', {
+
+            opacity: 1, y: 0, duration: 0.8,
+
+            stagger: 0.15, ease: 'power2.out', delay: 0.3
+
+          });
+
+        }
+
+      });
+
+
+
+      // Subscription
+
+      ScrollTrigger.create({
+
+        trigger: '.subscription',
+
+        start: 'top 60%',
+
+        onEnter: () => {
+
+          gsap.to('.subscription-text', { opacity: 1, duration: 1, ease: 'power2.out' });
+
+          gsap.to('.subscription-plans', { opacity: 1, duration: 1, delay: 0.3 });
+
+        }
+
+      });
+
+
+
+      // Ritual
+
+      ScrollTrigger.create({
+
+        trigger: '.ritual',
+
+        start: 'top 60%',
+
+        onEnter: () => {
+
+          gsap.to('.ritual-label', { opacity: 1, duration: 0.6 });
+
+          gsap.to('.ritual-headline', { opacity: 1, y: 0, duration: 1, delay: 0.2, ease: 'power2.out' });
+
+          gsap.to('.ritual-sub', { opacity: 1, duration: 0.8, delay: 0.5 });
+
+          gsap.to('.ritual-cta', { opacity: 1, duration: 0.6, delay: 0.8 });
+
+        }
+
+      });
+
+
+
+      // Parallax on hero bg text
+
+      gsap.to('.hero-bg-text', {
+
+        y: -200,
+
+        ease: 'none',
+
+        scrollTrigger: {
+
+          trigger: '.hero',
+
+          start: 'top top',
+
+          end: 'bottom top',
+
+          scrub: true
+
+        }
+
+      });
+
+    }
+
+  </script>
+
+</body>
+
+</html>
+
