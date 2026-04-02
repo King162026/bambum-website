@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Brothers Barber Shop · Brampton's Premier Grooming Lounge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #111111;
+  color: #F4F1EE;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5%;
+  background: rgba(17, 17, 17, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.nav-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #F4F1EE;
+}
+
+.nav-phone {
+  font-size: 1rem;
+  color: #C9A84C;
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: opacity 0.3s ease;
+}
+
+.nav-phone:hover {
+  opacity: 0.8;
+}
+
+.hero {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: 0 5%;
+  background: linear-gradient(165deg, #1a1a1a 0%, #0d0d0d 50%, #000000 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: radial-gradient(ellipse at top right, rgba(201, 168, 76, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 800px;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  font-size: 0.875rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #C9A84C;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  margin-bottom: 2rem;
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  color: rgba(244, 241, 238, 0.7);
+  margin-bottom: 3rem;
+  max-width: 600px;
+  line-height: 1.8;
+}
+
+.social-proof {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.95rem;
+  color: rgba(244, 241, 238, 0.6);
+  margin-top: 3rem;
+}
+
+.star-rating {
+  color: #C9A84C;
+  font-size: 1.1rem;
+}
+
+.divider {
+  color: rgba(244, 241, 238, 0.3);
+}
+
+.section {
+  padding: 8rem 5%;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 600ms cubic-bezier(0.83, 0, 0.17, 1), 
+              transform 600ms cubic-bezier(0.83, 0, 0.17, 1);
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-header {
+  max-width: 1200px;
+  margin: 0 auto 5rem;
+  text-align: center;
+}
+
+.section-eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #C9A84C;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 1.5rem;
+}
+
+.section-description {
+  font-size: 1.125rem;
+  color: rgba(244, 241, 238, 0.6);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: linear-gradient(135deg, rgba(201, 168, 76, 0.05) 0%, rgba(201, 168, 76, 0.01) 100%);
+  padding: 3rem 2rem;
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  transition: all 400ms cubic-bezier(0.83, 0, 0.17, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.08), transparent);
+  transition: left 600ms ease;
+}
+
+.service-card:hover::before {
+  left: 100%;
+}
+
+.service-card:hover {
+  border-color: rgba(201, 168, 76, 0.4);
+  transform: translateY(-4px);
+}
+
+.service-card h3 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: #F4F1EE;
+}
+
+.service-card p {
+  color: rgba(244, 241, 238, 0.6);
+  line-height: 1.7;
+}
+
+.reviews-section {
+  background: linear-gradient(180deg, #111111 0%, #0a0a0a 100%);
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.review-card {
+  position: relative;
+  padding: 2.5rem;
+  background: rgba(201, 168, 76, 0.03);
+  border-left: 2px solid #C9A84C;
+}
+
+.review-quote {
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  font-size: 80px;
+  line-height: 1;
+  color: #C9A84C;
+  opacity: 0.12;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.review-text {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.review-author {
+  font-size: 0.95rem;
+  color: #C9A84C;
+  font-weight: 500;
+}
+
+.hours-section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 3rem;
+}
+
+.hours-table tr {
+  border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+}
+
+.hours-table td {
+  padding: 1.5rem 0;
+  font-size: 1.125rem;
+}
+
+.hours-table td:first-child {
+  color: rgba(244, 241, 238, 0.6);
+  width: 40%;
+}
+
+.hours-table td:last-child {
+  text-align: right;
+  color: #F4F1EE;
+  font-weight: 500;
+}
+
+.cta-section {
+  text-align: center;
+  padding: 10rem 5%;
+  background: linear-gradient(165deg, #0d0d0d 0%, #000000 100%);
+  position: relative;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-phone {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: #C9A84C;
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1.25rem 3.5rem;
+  border: 2px solid #C9A84C;
+  color: #C9A84C;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: transparent;
+  transition: all 400ms cubic-bezier(0.83, 0, 0.17, 1);
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: #C9A84C;
+  transition: left 400ms cubic-bezier(0.83, 0, 0.17, 1);
+  z-index: -1;
+}
+
+.cta-button:hover::before {
+  left: 0;
+}
+
+.cta-button:hover {
+  color: #111111;
+}
+
+.cta-address {
+  margin-top: 3rem;
+  font-size: 0.95rem;
+  color: rgba(244, 241, 238, 0.5);
+  letter-spacing: 0.5px;
+}
+
+.footer {
+  padding: 2rem 5%;
+  text-align: center;
+  border-top: 1px solid rgba(201, 168, 76, 0.1);
+}
+
+.footer-credit {
+  font-size: 0.75rem;
+  color: rgba(244, 241, 238, 0.3);
+  letter-spacing: 1px;
+}
+
+.footer-credit a {
+  color: rgba(201, 168, 76, 0.5);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.footer-credit a:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    padding: 1rem 5%;
+  }
+  
+  .nav-name {
+    font-size: 1.125rem;
+  }
+  
+  .nav-phone {
+    font-size: 0.875rem;
+  }
+  
+  .hero {
+    min-height: 100svh;
+    padding: 0 5%;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+  }
+  
+  .social-proof {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .divider {
+    display: none;
+  }
+  
+  .section {
+    padding: 5rem 5%;
+  }
+  
+  .section-header {
+    margin-bottom: 3rem;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .hours-table td {
+    font-size: 1rem;
+    padding: 1.25rem 0;
+  }
+  
+  .cta-section {
+    padding: 6rem 5%;
+  }
+  
+  .cta-phone {
+    font-size: 2rem;
+  }
+  
+  .cta-button {
+    padding: 1rem 2.5rem;
+    font-size: 0.875rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-name">The Brothers</div>
+  <a href="tel:9055550147" class="nav-phone">(905) 555-0147</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Brampton's Premier Grooming Lounge</div>
+    <h1>Where Precision<br>Meets Prestige</h1>
+    <p class="hero-subtitle">Elevated barbering for the modern gentleman. Expert craftsmanship in an atmosphere of refined distinction.</p>
+    <div class="social-proof">
+      <span class="star-rating">★★★★★</span>
+      <span class="divider">·</span>
+      <span>4.9 Rating</span>
+      <span class="divider">·</span>
+      <span>312 Reviews</span>
+      <span class="divider">·</span>
+      <span>Brampton</span>
+    </div>
+  </div>
+</section>
+
+<section class="section services-section">
+  <div class="section-header">
+    <div class="section-eyebrow">Our Services</div>
+    <h2 class="section-title">Mastery in Every Detail</h2>
+    <p class="section-description">Each service is a carefully orchestrated experience, delivered with precision and personalized attention.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <h3>Signature Cut</h3>
+      <p>Precision cutting tailored to your unique style and features. A masterclass in modern barbering technique.</p>
+    </div>
+    <div class="service-card">
+      <h3>Hot Towel Shave</h3>
+      <p>The quintessential grooming ritual. Traditional straight-razor shave with premium products and meticulous care.</p>
+    </div>
+    <div class="service-card">
+      <h3>Beard Sculpt</h3>
+      <p>Architectural shaping and conditioning for the distinguished beard. Precision trimming meets expert styling.</p>
+    </div>
+    <div class="service-card">
+      <h3>Line Up</h3>
+      <p>Razor-sharp edges and immaculate detailing. The finishing touch that elevates your entire appearance.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section reviews-section">
+  <div class="section-header">
+    <div class="section-eyebrow">Testimonials</div>
+    <h2 class="section-title">Trusted by Brampton's Finest</h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <p class="review-text">Best fade in Brampton, hands down.</p>
+      <div class="review-author">— Marcus T.</div>
+    </div>
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <p class="review-text">Clean cuts, great atmosphere.</p>
+      <div class="review-author">— Jordan K.</div>
+    </div>
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <p class="review-text">These guys are artists.</p>
+      <div class="review-author">— Amir S.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section hours-section">
+  <div class="section-header">
+    <div class="section-eyebrow">Visit Us</div>
+    <h2 class="section-title">Hours of Operation</h2>
+  </div>
+  <table class="hours-table">
+    <tr>
+      <td>Monday – Friday</td>
+      <td>9:00 AM – 8:00 PM</td>
+    </tr>
+    <tr>
+      <td>Saturday</td>
+      <td>8:00 AM – 6:00 PM</td>
+    </tr>
+    <tr>
+      <td>Sunday</td>
+      <td>10:00 AM – 4:00 PM</td>
+    </tr>
+  </table>
+</section>
+
+<section class="section cta-section">
+  <div class="cta-phone">(905) 555-0147</div>
+  <a href="tel:9055550147" class="cta-button">Reserve Your Chair</a>
+  <div class="cta-address">45 Main St N · Brampton, ON</div>
+</section>
+
+<footer class="footer">
+  <p class="footer-credit">Demo crafted by <a href="https://bambum.ca" target="_blank">bambum.ca</a></p>
+</footer>
+
+<script>
+// Intersection Observer for scroll reveals
+const observerOptions = {
+  threshold: 0.15,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.section').forEach(section => {
+  observer.observe(section);
+});
+
+// Nav background on scroll
+let lastScroll = 0;
+const nav = document.querySelector('.nav');
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  
+  if (currentScroll > 100) {
+    nav.style.background = 'rgba(17, 17, 17, 0.95)';
+  } else {
+    nav.style.background = 'rgba(17, 17, 17, 0.75)';
+  }
+  
+  lastScroll = currentScroll;
+});
+</script>
+
+</body>
+</html>
